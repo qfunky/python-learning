@@ -6,22 +6,31 @@ print(N)
 
 
 # ===== Задание 2: Второй минимум последовательности =====
-a = int(input())
-b = int(input())
-
-min1, min2 = min(a, b), max(a, b)
+min1 = None
+min2 = None
 
 while True:
     x = int(input())
     if x == 0:
         break
-    if x < min1:
-        min2 = min1
-        min1 = x
-    elif min1 < x < min2:
-        min2 = x
 
-print(f'Второй минимум это: {min2}')
+    if min1 is None:
+        min1 = x
+    elif min2 is None:
+        if x < min1:
+            min2 = min1
+            min1 = x
+        else:
+            min2 = x
+    else:
+        if x < min1:
+            min2 = min1
+            min1 = x
+        elif x < min2:
+            min2 = x
+
+print(min2)
+
 
 
 # ===== Задание 3: Количество локальных максимумов =====
